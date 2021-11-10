@@ -8,6 +8,7 @@ const App = () => {
   const [allWaves, setAllWaves] = useState([]);
   const [loading, setLoading] = useState(false);
   const [waveCount, setWaveCount] = useState(null);
+  const [message, setMessage] = useState("");
 
   const contractAddress = "0x541dA67a52c94a8d64b3678362e0251AbA228Fa3";
   const contractABI = abi.abi;
@@ -76,7 +77,7 @@ const App = () => {
         let count = await wavePortalContract.getTotalWaves();
         console.log("Retrieved total wave count...", count.toNumber());
 
-        const waveTxn = await wavePortalContract.wave("PLACEHOLDER");
+        const waveTxn = await wavePortalContract.wave(message);
         setLoading(true);
         console.log("Mining...", waveTxn.hash);
 
@@ -140,6 +141,12 @@ const App = () => {
         <div className="bio">
           <p>I'm Cody. Connect your Ethereum wallet and wave at me!</p>
         </div>
+
+        <input
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          type="text"
+        />
 
         <button className="waveButton" onClick={wave}>
           Wave at Me
