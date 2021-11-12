@@ -10,7 +10,7 @@ const App = () => {
   const [waveCount, setWaveCount] = useState(null);
   const [message, setMessage] = useState("");
 
-  const contractAddress = "0x541dA67a52c94a8d64b3678362e0251AbA228Fa3";
+  const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
   const contractABI = abi.abi;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,7 +131,7 @@ const App = () => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
-  }, [checkIfWalletIsConnected]);
+  });
 
   return (
     <div className="mainContainer">
